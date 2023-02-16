@@ -37,6 +37,8 @@ const Formulario = ({moneda, setMoneda, criptoMoneda, setCriptoMoneda, setConsul
   const cotizarPrecio = () => {
     if( [moneda, criptoMoneda].includes('') ) 
       return mostrarAlerta()
+
+    setConsultarAPI(true)
   }
 
   const mostrarAlerta = () => {
@@ -71,7 +73,7 @@ const Formulario = ({moneda, setMoneda, criptoMoneda, setCriptoMoneda, setConsul
         <Picker.Item label="- Seleccione -" value="" />
         {
           criptoSetMonedas.map( ({CoinInfo}:any) => 
-            <Picker.Item label={CoinInfo?.FullName} value={CoinInfo?.Name} key={CoinInfo?.id}/>
+            <Picker.Item label={CoinInfo?.FullName} value={CoinInfo?.Name} key={CoinInfo?.Id}/>
           )
         }
       </Picker>
@@ -92,8 +94,7 @@ const styles = StyleSheet.create({
   },
   botonCotizar: {
     backgroundColor: '#5E49E2',
-    padding: 10,
-    marginTop: 20
+    padding: 10
   },
   textoCotizar: { 
     color: '#FFFFFF',
